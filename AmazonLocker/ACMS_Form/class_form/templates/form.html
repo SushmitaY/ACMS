@@ -1,0 +1,314 @@
+{% load static%}
+<HTML>
+<HEAD>
+	<meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		.card{
+	background-color: rgb(0,0,0); /* Fallback color */
+  	background-color: rgba(0,0,0, 0.3); /* Black w/opacity/see-through */
+  	color: white;
+  	font-weight: bold;
+  	border: 3px solid #f1f1f1;
+  	position: absolute;
+  	margin-top: 80px;
+  	margin-bottom: 30px;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	width: 60%;
+  	padding: 20px;
+  	text-align: center;
+}
+.card > .card-body{
+	margin-left: 175px;
+	font-size: 15px;
+}
+body{
+	background-color: rgba(1,1,1,0.8);
+}
+.bg-image {
+  /* The image used */
+  background-image: url("{%static 'amazon_back.png'%}");
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.radio-inline{
+	margin-left: 165px;
+}
+h2{
+	padding-bottom: 20px;
+	font-weight: bold;
+}
+	</style>
+	<script type="text/javascript">
+		function checkinput()
+		{
+			var input_text = document.getElementById("Transaction");
+			if(isNaN(input_text.value))
+			{
+				alert("Enter a Number");
+				input_text.focus();
+				return false;
+			}
+			else if (input_text.value < 0) 
+			{
+				alert("Enter a Number Greater than 0");
+				input_text.focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		function checkinput1()
+		{
+			var input_text = document.getElementById("Transaction1");
+			if(isNaN(input_text.value))
+			{
+				alert("Enter a Number");
+				input_text.focus();
+				return false;
+			}
+			else if (input_text.value < 0) 
+			{
+				alert("Enter a Number Greater than 0");
+				input_text.focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		function checkinput2()
+		{
+			var input_text = document.getElementById("Transaction2");
+			if(isNaN(input_text.value))
+			{
+				alert("Enter a Number");
+				input_text.focus();
+				return false;
+			}
+			else if (input_text.value < 0) 
+			{
+				alert("Enter a Number Greater than 0");
+				input_text.focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		function checkinput3()
+		{
+			var input_text = document.getElementById("Transaction3");
+			if(isNaN(input_text.value))
+			{
+				alert("Enter a Number");
+				input_text.focus();
+				return false;
+			}
+			else if (input_text.value < 0) 
+			{
+				alert("Enter a Number Greater than 0");
+				input_text.focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		function checkinput4()
+		{
+			var input_text = document.getElementById("Transaction4");
+			if(isNaN(input_text.value))
+			{
+				alert("Enter a Number");
+				input_text.focus();
+				return false;
+			}
+			else if (input_text.value < 0) 
+			{
+				alert("Enter a Number Greater than 0");
+				input_text.focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+		function checkinput5()
+		{
+			var input_text = document.getElementById("Transaction5");
+			if(isNaN(input_text.value))
+			{
+				alert("Enter a Number");
+				input_text.focus();
+				return false;
+			}
+			else if (input_text.value < 0) 
+			{
+				alert("Enter a Number Greater than 0");
+				input_text.focus();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		}
+	</script>
+<TITLE>	Home_Page </TITLE>
+</HEAD>
+<BODY>
+<div class="bg-image"></div>
+<div class="card bg-light" >
+	<article class="card-body mx-auto" style="max-width: 400px;">
+		<h2 class="card-title mt-3 text-center"> Item Information </h2>
+		<form method="POST", action="{% url 'Classify' %}">
+			{% csrf_token %}
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Transaction_ID </span>
+	<input type="text" name="Transaction_ID" required class="form-control" id ="Transaction" onchange="checkinput()">
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Address </span>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input id ="one" type="radio" name="Address" value="1" required> Home
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input id = "two" type="radio" name="Address" value="0"> Office
+				</label>
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Item Weight (lbs)   </span>
+				<input type="text" name="Item_Weight" required class="form-control" id ="Transaction1" onchange="checkinput1()">
+			</div>
+			<div id = "Transaction_After"></div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Item Length (inches)</span>
+				<input type="text" name="Item_Length" required class="form-control" id ="Transaction2" onchange="checkinput2()">
+			</div>
+			<div id = "Transaction_After"></div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Item Breadth (inches)</span>
+				<input type="text" name="Item_Breadth" required class="form-control" id ="Transaction3" onchange="checkinput3()">
+			</div>
+			<div id = "Transaction_After"></div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Item Height (inches)</span>
+				<input type="text" name="Item_Height" required class="form-control" id ="Transaction4" onchange="checkinput4()">
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Item Price (Rs)</span>
+				<input type="text" name="Item_Price" required class="form-control" id ="Transaction5" onchange="checkinput5()">
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> IsHazardous </span>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Hazardous" value="1" required>Yes
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Hazardous" value="0">No
+				</label>
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> IsFulfilledByAmazon </span>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="FulfilledByAmazon" value="1" required>Yes
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="FulfilledByAmazon" value="0">No
+				</label>
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> IsSubscribed </span>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Subscribed" value="1" required>Yes
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Subscribed" value="0">No
+				</label>
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> IsReleaseDate </span>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="ReleaseDate" value="1" required>Yes
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="ReleaseDate" value="0">No
+				</label>
+			</div>
+			<div class="form-group input-group">
+				<span class="input-group-addon"> Models </span>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input class = "bayes" type="radio" name="Models" value="Bayes"required>Bayes Model
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Models" value="Logistic">Logistic Regression
+				</label>
+			</div >
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Models" value="Rfc">Random Forest Classifier
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Models" value="Knn">Knn Model
+				</label>
+			</div>
+			<div class="form-group input-group center">
+				<label class="radio-inline">
+					<input type="radio" name="Models" value="Tree">Decision Tree Model
+				</label>
+			</div>
+			<div class="form-group">
+				<button type="submit", class="btn btn-primary btn-block" name = "Submit", value="Submit"> Classify </button>
+			</div>
+		</form>
+	</article>
+</div>
+</BODY>
+</HTML>

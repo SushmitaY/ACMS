@@ -1,0 +1,59 @@
+
+-----------------------------------
+Amazon Locker Recommendation Engine
+-----------------------------------
+
+************
+Feature Sets               
+************
+
+We are going to have three relations for our Locker Recommendation Engine
+
+1. Item Relation will have the following features
+
+- ASIN (primary key)
+-ItemWeight
+-ItemLength
+-ItemHeight
+-ItemBreadth
+-ItemPrice
+-IsHazardous
+-IsFulfilledByAmazon
+-IsSubscibed
+-ItemCountry
+-HasReleaseDateDelivery
+-IsFragile
+
+2. User Relation will have the following features
+
+-UserId(primary key)
+-Name
+-Gender
+-Email
+-Password
+-Address
+	-Address1
+	        -Delivery Preference
+	-Address2(Optional)
+	        -Delivery Preference
+-DefaultAddress	        
+-DateOfBirth
+-Occupation
+-Country
+-MobileNumber
+
+3. Order Relation will have the following features
+
+-TransactionId(primary Key)
+-UserId
+-NoOfItems
+-Items
+	-Item1:(ASIN)
+	-Item2:(optional)
+	-Item3:(optional)
+-Attempts
+-DeliveredStatus	--options (enum)
+-LockerRecommended
+-isLockerUsed
+-LockerUsed
+-IsGiftItem

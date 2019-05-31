@@ -1,0 +1,4 @@
+TransactionID,ItemWeight_lbs,ItemLength,ItemBreadth,ItemHeight,Itemprice,isHazardous,isFullFilledByAmazon,isSubscribed,isReleaseDate,isLockerRecommended,isLockerUsed
+2,10.0,5.0,5.0,5.0,200.0,0,1,0,1,0.0,0.0
+3,10.0,5.0,5.0,5.0,200.0,0,1,0,0,1.0,1.0
+4,10.0,5.0,5.0,5.0,200.0,0,1,0,0,1.0,1
