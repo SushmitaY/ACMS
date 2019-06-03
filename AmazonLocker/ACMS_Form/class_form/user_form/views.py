@@ -5,15 +5,15 @@ from user_form import classification
 # Create your views here.
 
 def Reccommendation(model, pred_acc):
-	feedback_data = pd.read_csv("/home/tanya/Documents/AmazonLocker/ACMS_Form/feedback.csv", error_bad_lines = False)
+	feedback_data = pd.read_csv("feedback.csv", error_bad_lines = False)
 	unpredected_data = feedback_data.tail(1)
 	feedback_data = feedback_data.iloc[:-1, :]
-	feedback_data.to_csv('/home/tanya/Documents/AmazonLocker/ACMS_Form/feedback.csv', index=False)
+	feedback_data.to_csv('feedback.csv', index=False)
 	
 	unpredected_data['isLockerRecommended'] = pred_acc[0]
 	if pred_acc[0] == 0:
 		unpredected_data['isLockerUsed'] = 0
-	with open('/home/tanya/Documents/AmazonLocker/ACMS_Form/feedback.csv', 'a') as f:
+	with open('feedback.csv', 'a') as f:
 		unpredected_data.to_csv(f, header=False, index=False)
 		
 	if pred_acc[0] == 1:
@@ -49,7 +49,7 @@ def Classify(request):
 	user_data['Subscribed'] = int(request.POST.get('Subscribed'))
 	user_data['ReleaseDate'] = int(request.POST.get('ReleaseDate'))
 	
-	with open('/home/tanya/Documents/AmazonLocker/ACMS_Form/feedback.csv', 'a') as feedback_data:
+	with open('feedback.csv', 'a') as feedback_data:
 		pd.DataFrame(user_data, index=[0]).to_csv(feedback_data, header=False, index=False)
     
 	if request.POST.get('Models') == 'Bayes':
@@ -75,13 +75,13 @@ def Classify(request):
 
 def SaveFeedback(request):
 	
-	feedback_data = pd.read_csv("/home/tanya/Documents/AmazonLocker/ACMS_Form/feedback.csv", error_bad_lines = False)
+	feedback_data = pd.read_csv("feedback.csv", error_bad_lines = False)
 	unfed_data = feedback_data.tail(n=1)
 	unfed_data['isLockerUsed'] = request.POST.get('feedback')
 	feedback_data = feedback_data.iloc[:-1]
-	feedback_data.to_csv('/home/tanya/Documents/AmazonLocker/ACMS_Form/feedback.csv', index=False)
+	feedback_data.to_csv('feedback.csv', index=False)
 	
-	with open('/home/tanya/Documents/AmazonLocker/ACMS_Form/feedback.csv', 'a') as f:
+	with open('feedback.csv', 'a') as f:
 		unfed_data.to_csv(f, header=False, index=False)
 		
 	return render(request, 'final.html')

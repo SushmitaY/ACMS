@@ -17,8 +17,8 @@ import pandas as pd
 
 # --------------Reading CSV---------------- #
 
-orders_data = pd.read_csv("/home/tanya/Documents/AmazonLocker/ACMS_Form/Orders.csv", error_bad_lines = False)
-orders_data
+orders_data = pd.read_csv('orders.csv', error_bad_lines = False)
+#orders_data
 #orders_data = orders_data.drop(['Unnamed: 0'],axis =1)
 orders_data = orders_data.drop(['address_line1', 'address_line2', 'landmark'], axis = 1)
 replace_map_Y = {'isLockerRecommended' : {'Y' : 1, 'N' : 0}}
